@@ -9,11 +9,10 @@ You can tag them, and visualize them with color highlighting.
 """
 
 from os import urandom
-from flask import Flask, g
+from flask import g, Flask
 
 from lib.sniptr import sniptr
 from lib.model.base import database
-
 
 DEBUG = True
 SECRET_KEY = urandom(25)
