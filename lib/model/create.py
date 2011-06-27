@@ -28,6 +28,8 @@ def fill_with_content():
     Snipet.get_or_create(title="Create os dir in python",
                          text="import os\n"\
                               "os.mkdir('FOLDER_NAME')")
+    Snipet.get_or_create(title="Get command line arguments in C",
+                         text="""int main(int *argc, char *argv[]){}""")
 
 
 if __name__ == "__main__":
