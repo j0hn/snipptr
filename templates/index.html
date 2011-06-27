@@ -3,12 +3,18 @@
 {% block title %} Index {% endblock %}
 
 {% block content %}
-    {% if snipets %}
-        {% for snipet in snipets %}
-            {{ snipet.title }} <br />
-            {{ snipet.text }}
-        {% endfor %}
-    {% else %}
-        Sorry, no snipets saved yet :(
-    {% endif %}
+    <div id="snipets">
+        {% if snipets %}
+            <ul>
+            {% for snipet in snipets %}
+                <li>
+                    <div class="snipet-title">{{ snipet.title }}</div>
+                    <div class="snipet-text">{{ snipet.text }}</div>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            Sorry, no snipets saved yet :(
+        {% endif %}
+    </div>
 {% endblock %}
