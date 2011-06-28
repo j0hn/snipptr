@@ -13,8 +13,9 @@
                         <div class="snippet-text">{{ snippet.text }}</div>
                     </pre>
                     <div class="snippet-tags">
-                        <span class="snippet-tag">Python</span>
-                        <span class="snippet-tag">PHP</span>
+                        {% for tag in snippet.get_tags() %}
+                            <span class="snippet-tag">{{ tag.name }}</span>
+                        {% endfor %}
                     </div>
                 </li>
             {% endfor %}

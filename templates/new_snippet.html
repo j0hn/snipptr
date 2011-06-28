@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} New Snippet {% endblock %}
+
+{% block content %}
+    <form action="{{ url_for("new_snippet") }}" method="POST">
+        <div class="form-label">Title:</div>
+        <input type="text" name="title" class="input-text" />
+        <br />
+
+        <div class="form-label">Snippet:</div>
+        <textarea name="text" class="input-textarea"></textarea>
+        <br />
+
+        <div class="form-label">Tags:</div>
+        <input type="text" name="tags" class="input-text" />
+        <br />
+
+        <div class="form-label">Name:</div>
+        {% if g.user %}
+            {{ g.user }}
+        {% else %}
+            <input type="text" name="user" class="input-text" value="Anonymous"/>
+        {% endif %}
+        <br />
+
+        <div class="form-label">&nbsp;</div>
+        <input type="submit" value="Send" class="input-button" />
+        <br />
+    </form>
+{% endblock %}

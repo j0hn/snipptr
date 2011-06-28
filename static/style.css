@@ -30,6 +30,30 @@ body{
     border-radius: 0 0 8px 8px;
 }
 
+#navbar{
+    background: #e5e5e5;
+    border-bottom: 5px solid #ccc;
+    font-size: 14px;
+    margin: -10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    padding-left: 0;
+}
+
+#navbar a{
+    color: #5A6986;
+    text-decoration: none;
+    border-right: 2px dotted #ccc;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: -3px;
+}
+
+#navbar a:hover{
+    background: #fff;
+}
+
 #snippets ul{
     padding: 0;
     margin: 0;
@@ -71,5 +95,29 @@ body{
     color: #fff;
     border: 2px solid #4A5976;
     border-radius: 5px;
+}
 
+.form-label{
+    float: left;
+    width: 150px;
+}
+
+.input-text, .input-textarea, .input-button{
+    border: 2px solid #bbb;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.input-textarea{
+    width: 296px;
+    height: 150px;
+}
+
+.input-text{
+    width: 300px;
+}
+
+.input-button{
+    background: #f5f5f5;
+    padding: 3px 6px;
 }
