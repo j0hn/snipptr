@@ -5,10 +5,12 @@
 Creates the database tables.
 """
 
+import time
 import peewee
 
-from snippet import Snippet
+from tag import Tag
 from base import database
+from snippet import Snippet, SnippetTag
 
 
 def create_tables():
@@ -18,6 +20,8 @@ def create_tables():
 
     database.connect()
     Snippet.create_table()
+    SnippetTag.create_table()
+    Tag.create_table()
 
 
 def fill_with_content():
@@ -25,11 +29,20 @@ def fill_with_content():
     Fills with sample content.
     """
 
-    Snippet.get_or_create(title="Create os dir in python",
-                         text="import os\n"\
-                              "os.mkdir('FOLDER_NAME')")
-    Snippet.get_or_create(title="Get command line arguments in C",
-                         text="""int main(int *argc, char *argv[]){}""")
+    create_snippet("Create os dir in python",
+                   "import os\nos.mkdir('FOLDER_NAME')",
+                   ["Python", "os"])
+    create_snippet("Get command line arguments in C",
+                   "int main(int *argc, char *argv[]){}",
+                   ["C"])
+
+
+def create_snippet(title, text, tags_names):
+    snip = Snippet.get_or_create(title=title, text=text, date=str(time.time()))
+
+    for tag_name in tags_names:
+        tag = Tag.get_or_create(name=tag_name)
+        SnippetTag.get_or_create(snippet=snip, tag=tag)
 
 
 if __name__ == "__main__":
