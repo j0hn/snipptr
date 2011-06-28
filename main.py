@@ -2,24 +2,24 @@
 # encoding: utf-8
 
 """
-Sniptr. Simple snipet save webpage.
+Snipptr. Simple snippet save webpage.
 
-Saves snipets of any programming language you want.
+Saves snippets of any programming language you want.
 You can tag them, and visualize them with color highlighting.
 """
 
 from os import urandom
 from flask import g, Flask
 
-from lib.sniptr import sniptr
+from lib.snipptr import snipptr
 from lib.model.base import database
 
 DEBUG = True
 SECRET_KEY = urandom(25)
 
-# We create the app and register the sniptr module
+# We create the app and register the snipptr module
 app = Flask(__name__)
-app.register_module(sniptr)
+app.register_module(snipptr)
 
 
 @app.before_request

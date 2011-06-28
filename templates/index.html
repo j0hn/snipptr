@@ -3,24 +3,24 @@
 {% block title %} Index {% endblock %}
 
 {% block content %}
-    <div id="snipets">
-        {% if snipets %}
+    <div id="snippets">
+        {% if snippets %}
             <ul>
-            {% for snipet in snipets %}
+            {% for snippet in snippets %}
                 <li>
-                    <div class="snipet-title">{{ snipet.title }}</div>
+                    <div class="snippet-title">{{ snippet.title }}</div>
                     <pre>
-                        <div class="snipet-text">{{ snipet.text }}</div>
+                        <div class="snippet-text">{{ snippet.text }}</div>
                     </pre>
-                    <div class="snipet-tags">
-                        <span class="snipet-tag">Python</span>
-                        <span class="snipet-tag">PHP</span>
+                    <div class="snippet-tags">
+                        <span class="snippet-tag">Python</span>
+                        <span class="snippet-tag">PHP</span>
                     </div>
                 </li>
             {% endfor %}
             </ul>
         {% else %}
-            Sorry, no snipets saved yet :(
+            Sorry, no snippets saved yet :(
         {% endif %}
     </div>
 {% endblock %}

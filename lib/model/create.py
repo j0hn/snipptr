@@ -7,7 +7,7 @@ Creates the database tables.
 
 import peewee
 
-from snipet import Snipet
+from snippet import Snippet
 from base import database
 
 
@@ -17,7 +17,7 @@ def create_tables():
     """
 
     database.connect()
-    Snipet.create_table()
+    Snippet.create_table()
 
 
 def fill_with_content():
@@ -25,10 +25,10 @@ def fill_with_content():
     Fills with sample content.
     """
 
-    Snipet.get_or_create(title="Create os dir in python",
+    Snippet.get_or_create(title="Create os dir in python",
                          text="import os\n"\
                               "os.mkdir('FOLDER_NAME')")
-    Snipet.get_or_create(title="Get command line arguments in C",
+    Snippet.get_or_create(title="Get command line arguments in C",
                          text="""int main(int *argc, char *argv[]){}""")
 
 

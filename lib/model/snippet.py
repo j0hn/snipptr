@@ -2,14 +2,14 @@
 # encoding: utf-8
 
 """
-Snipet. A short peace of handfull code.
+Snippet. A short peace of handfull code.
 """
 
 import peewee
 from base import BaseModel
 
 
-class Snipet(BaseModel):
+class Snippet(BaseModel):
     title = peewee.CharField()
     text = peewee.CharField()
     date = peewee.CharField()

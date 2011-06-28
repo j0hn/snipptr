@@ -30,29 +30,29 @@ body{
     border-radius: 0 0 8px 8px;
 }
 
-#snipets ul{
+#snippets ul{
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-#snipets li{
+#snippets li{
     border-bottom: 2px dashed #ccc;
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
 
-#snipets pre{
+#snippets pre{
     margin: 0;
     margin-bottom: -15px;
     padding: 0;
 }
 
-.snipet-title{
+.snippet-title{
     margin-bottom: 5px;
 }
 
-.snipet-text{
+.snippet-text{
     padding-left: 15px;
     background: #fff;
     border: 1px solid #ddd;
@@ -60,12 +60,12 @@ body{
     padding-bottom: 10px;
 }
 
-.snipet-tags{
+.snippet-tags{
     text-align: right;
     font-size: 10px;
 }
 
-.snipet-tag{
+.snippet-tag{
     background: #5A6986;
     padding: 3px;
     color: #fff;

@@ -10,7 +10,7 @@ the ORM connection.
 
 import peewee
 
-database = peewee.Database(peewee.SqliteAdapter(), "sniptr.db")
+database = peewee.Database(peewee.SqliteAdapter(), "snipptr.db")
 
 
 class BaseModel(peewee.Model):
