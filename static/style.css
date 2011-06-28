@@ -10,11 +10,11 @@ body{
     padding-top: 10px;
     height: 40px;
     border-bottom: 8px solid #ccc;
-    text-shadow: 1px 1px 2px #000;
 }
 
 #header h1{
-    color: #333;
+    color: #5A6986;
+    text-shadow: -1px 0 1px #000;
     font-size: 50px;
     padding: 0;
     margin: 0;
@@ -27,6 +27,7 @@ body{
     border-top: 0;
     padding: 10px;
     background: #eee;
+    border-radius: 0 0 8px 8px;
 }
 
 #snipets ul{
@@ -41,6 +42,12 @@ body{
     margin-bottom: 10px;
 }
 
+#snipets pre{
+    margin: 0;
+    margin-bottom: -15px;
+    padding: 0;
+}
+
 .snipet-title{
     margin-bottom: 5px;
 }
@@ -51,4 +58,18 @@ body{
     border: 1px solid #ddd;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.snipet-tags{
+    text-align: right;
+    font-size: 10px;
+}
+
+.snipet-tag{
+    background: #5A6986;
+    padding: 3px;
+    color: #fff;
+    border: 2px solid #4A5976;
+    border-radius: 5px;
+
 }

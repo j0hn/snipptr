@@ -9,7 +9,13 @@
             {% for snipet in snipets %}
                 <li>
                     <div class="snipet-title">{{ snipet.title }}</div>
-                    <div class="snipet-text">{{ snipet.text }}</div>
+                    <pre>
+                        <div class="snipet-text">{{ snipet.text }}</div>
+                    </pre>
+                    <div class="snipet-tags">
+                        <span class="snipet-tag">Python</span>
+                        <span class="snipet-tag">PHP</span>
+                    </div>
                 </li>
             {% endfor %}
             </ul>
