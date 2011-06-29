@@ -9,10 +9,12 @@ and all the behaviour.
 """
 
 import time
-from flask import g, Module, render_template, request, redirect, url_for
+from flask import g, Module, render_template, request, redirect, url_for, \
+        abort, session
 
 from lib.model.snippet import Snippet, SnippetTag
 from lib.model.tag import Tag
+from lib.model.user import User
 
 snipptr = Module(__name__)
 
@@ -32,25 +34,56 @@ def new_snippet():
     text = request.form.get("text")
     tags = [x.strip() for x in request.form.get("tags").split(",")]
 
-    # if not g.user:
-    #    name = request.form.get("name")
-    # else:
-    #    name = g.user
+    if not g.user:
+       user = request.form.get("user")
+    else:
+       user = g.user.username
 
-    snip = Snippet.create(title=title, text=text, date=str(time.time()))
+    snip = Snippet.create(title=title, text=text,
+                          date=str(time.time()), user=user)
 
     for tag_name in tags:
-        tag = Tag.get_or_create(name=tag_name)
+        tag = Tag.get_or_create(name=tag_name.lower())
         SnippetTag.get_or_create(snippet=snip, tag=tag)
 
     return redirect(url_for("index"))
 
 
-@snipptr.route("/login")
+@snipptr.route("/view_tag/<tag_name>")
+def view_tag(tag_name):
+    try:
+        tag = Tag.get(name=tag_name.lower())
+    except:
+        abort(404)
+
+    snippets = [x.snippet for x in SnippetTag.select().where(tag=tag)]
+
+    return render_template("view_tag.html", tag=tag, snippets=snippets)
+
+
+@snipptr.route("/login", methods=["POST", "GET"])
 def login():
-    return "hi"
+    if g.user:  # Allready logged in
+        return redirect(url_for("index"))
+
+    error = None
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        try:
+            user = [x for x in User.select().where(username=username, password=password)].pop()
+            session["user_id"] = user.id
+            return redirect(url_for("index"))
+        except Exception, e:
+            print e
+            error = "Invalid username or password"
+
+    return render_template("login.html", error=error)
+
 
 
 @snipptr.route("/logout")
 def logout():
-    return "hi"
+    session.pop('user_id', None)
+    return redirect(url_for("index"))

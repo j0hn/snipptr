@@ -9,6 +9,7 @@ import time
 import peewee
 
 from tag import Tag
+from user import User
 from base import database
 from snippet import Snippet, SnippetTag
 
@@ -22,6 +23,7 @@ def create_tables():
     Snippet.create_table()
     SnippetTag.create_table()
     Tag.create_table()
+    User.create_table()
 
 
 def fill_with_content():
@@ -36,12 +38,14 @@ def fill_with_content():
                    "int main(int *argc, char *argv[]){}",
                    ["C"])
 
+    User.create(username="j0hn", password="negros")
+
 
 def create_snippet(title, text, tags_names):
     snip = Snippet.get_or_create(title=title, text=text, date=str(time.time()))
 
     for tag_name in tags_names:
-        tag = Tag.get_or_create(name=tag_name)
+        tag = Tag.get_or_create(name=tag_name.lower())
         SnippetTag.get_or_create(snippet=snip, tag=tag)
 
 

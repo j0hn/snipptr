@@ -14,6 +14,7 @@ class Snippet(BaseModel):
     title = peewee.CharField()
     text = peewee.CharField()
     date = peewee.CharField()
+    user = peewee.CharField()
     language = peewee.CharField()
 
     def get_tags(self):
