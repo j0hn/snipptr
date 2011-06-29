@@ -9,17 +9,19 @@
                 </pre>
                 <div class="snippet-tags">
                     By 
-                    {% if snippet.user %}
-                        {{ snippet.user }}
+                    {% if snippet.user.username %}
+                        {{ snippet.user.username }}
                     {% else %}
                         Anonymous
                     {% endif %}
 
+                    {% if snippet.get_tags() %}
                     {% for tag in snippet.get_tags() %}
                         <span class="snippet-tag">
                              <a href="{{ url_for('view_tag', tag_name=tag.name) }}">{{ tag.name }}</a>
                         </span>
                     {% endfor %}
+                    {% endif %}
                 </div>
             </li>
         {% endfor %}

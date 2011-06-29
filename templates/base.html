@@ -16,7 +16,7 @@
             <div id="navbar">
                 <a href="{{ url_for('index') }}">Home</a>
                 {% if g.user %}
-                    <a href="{{ url_for('logout') }}">{{ g.user.username }} Logout</a>
+                    <a href="{{ url_for('logout') }}">{{ g.user.username }} | Logout</a>
                 {% else %}
                     <a href="{{ url_for('login') }}">Login</a>
                 {% endif %} 

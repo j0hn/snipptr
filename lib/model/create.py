@@ -31,18 +31,23 @@ def fill_with_content():
     Fills with sample content.
     """
 
+    j0hn = User.create(username="j0hn", password="negros")
+
     create_snippet("Create os dir in python",
                    "import os\nos.mkdir('FOLDER_NAME')",
-                   ["Python", "os"])
+                   ["Python", "os"], j0hn)
     create_snippet("Get command line arguments in C",
                    "int main(int *argc, char *argv[]){}",
                    ["C"])
 
-    User.create(username="j0hn", password="negros")
 
 
-def create_snippet(title, text, tags_names):
-    snip = Snippet.get_or_create(title=title, text=text, date=str(time.time()))
+def create_snippet(title, text, tags_names, user=None):
+    if not user:
+        user = User().get_anon()
+
+    snip = Snippet.get_or_create(title=title, text=text,
+                                 date=str(time.time()), user=user)
 
     for tag_name in tags_names:
         tag = Tag.get_or_create(name=tag_name.lower())

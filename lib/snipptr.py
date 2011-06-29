@@ -9,6 +9,7 @@ and all the behaviour.
 """
 
 import time
+from itertools import chain
 from flask import g, Module, render_template, request, redirect, url_for, \
         abort, session
 
@@ -17,6 +18,10 @@ from lib.model.tag import Tag
 from lib.model.user import User
 
 snipptr = Module(__name__)
+
+
+def flatten(listOfLists):
+    return chain.from_iterable(listOfLists)
 
 
 @snipptr.route("/")
@@ -32,12 +37,13 @@ def new_snippet():
 
     title = request.form.get("title")
     text = request.form.get("text")
-    tags = [x.strip() for x in request.form.get("tags").split(",")]
+    tags = [x.split() for x in request.form.get("tags").split(",")]
+    tags = [x.strip() for x in flatten(tags)]
 
     if not g.user:
-       user = request.form.get("user")
+       user = User().get_anon()
     else:
-       user = g.user.username
+       user = g.user
 
     snip = Snippet.create(title=title, text=text,
                           date=str(time.time()), user=user)
