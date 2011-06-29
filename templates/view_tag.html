@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} Index {% endblock %}
+{% block title %} Viewing tag: {{ tag.name }} {% endblock %}
 
 {% block content %}
     <div id="snippets">
@@ -13,16 +13,9 @@
                         <div class="snippet-text">{{ snippet.text }}</div>
                     </pre>
                     <div class="snippet-tags">
-                        By 
-                        {% if snippet.user %}
-                            {{ snippet.user }}
-                        {% else %}
-                            Anonymous
-                        {% endif %}
-
                         {% for tag in snippet.get_tags() %}
                             <span class="snippet-tag">
-                                 <a href="{{ url_for('view_tag', tag_name=tag.name) }}">{{ tag.name }}</a>
+                                <a href="{{ url_for('view_tag', tag_name=tag.name) }}">{{ tag.name }}</a>
                             </span>
                         {% endfor %}
                     </div>

@@ -10,16 +10,17 @@
     </head>
     <body>
         <div id="header">
-            <h1> Snippetr </h1>
+            <a href="{{ url_for('index') }}"><h1> Snippetr</h1></a>
         </div>
         <div id="wrapper">
             <div id="navbar">
+                <a href="{{ url_for('index') }}">Home</a>
                 {% if g.user %}
-                    <a href="{{ url_for("logout") }}">{{ g.user }} Logout</a>
+                    <a href="{{ url_for('logout') }}">{{ g.user.username }} Logout</a>
                 {% else %}
-                    <a href="{{ url_for("login") }}">Login</a>
+                    <a href="{{ url_for('login') }}">Login</a>
                 {% endif %} 
-                <a href="{{ url_for("new_snippet") }}">New snippet</a>
+                <a href="{{ url_for('new_snippet') }}">New snippet</a>
             </div>
             {% block content %}
             {% endblock %}

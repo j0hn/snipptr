@@ -4,6 +4,10 @@ body{
     font-family: "verdana", "sans-serif", "arial";
 }
 
+a{
+    text-decoration: none;
+}
+
 #header{
     background: #eee;
     padding: 20px;
@@ -42,7 +46,6 @@ body{
 
 #navbar a{
     color: #5A6986;
-    text-decoration: none;
     border-right: 2px dotted #ccc;
     padding: 5px;
     padding-left: 10px;
@@ -89,7 +92,7 @@ body{
     font-size: 10px;
 }
 
-.snippet-tag{
+.snippet-tag a{
     background: #5A6986;
     padding: 3px;
     color: #fff;
