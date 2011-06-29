@@ -1,0 +1,30 @@
+<div id="snippets">
+    {% if snippets %}
+        <ul>
+        {% for snippet in snippets %}
+            <li>
+                <div class="snippet-title">{{ snippet.title }}</div>
+                <pre>
+                    <div class="snippet-text">{{ snippet.text }}</div>
+                </pre>
+                <div class="snippet-tags">
+                    By 
+                    {% if snippet.user %}
+                        {{ snippet.user }}
+                    {% else %}
+                        Anonymous
+                    {% endif %}
+
+                    {% for tag in snippet.get_tags() %}
+                        <span class="snippet-tag">
+                             <a href="{{ url_for('view_tag', tag_name=tag.name) }}">{{ tag.name }}</a>
+                        </span>
+                    {% endfor %}
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        Sorry, no snippets saved yet :(
+    {% endif %}
+</div>
